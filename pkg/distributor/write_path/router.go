@@ -20,6 +20,7 @@ import (
 	"github.com/grafana/pyroscope/pkg/tenant"
 	"github.com/grafana/pyroscope/pkg/util"
 	"github.com/grafana/pyroscope/pkg/util/connectgrpc"
+	"github.com/grafana/pyroscope/pkg/util/delayhandler"
 	httputil "github.com/grafana/pyroscope/pkg/util/http"
 )
 
@@ -86,6 +87,9 @@ func (m *Router) running(ctx context.Context) error {
 }
 
 func (m *Router) Send(ctx context.Context, req *distributormodel.PushRequest, config Config) error {
+	if config.AsyncIngest {
+		delayhandler.CancelDelay(ctx)
+	}
 	switch config.WritePath {
 	case SegmentWriterPath:
 		return m.sendToSegmentWriterOnly(ctx, req, &config)
