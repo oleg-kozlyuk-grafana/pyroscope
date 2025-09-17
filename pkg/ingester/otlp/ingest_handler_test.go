@@ -366,7 +366,6 @@ func TestConversion(t *testing.T) {
 
 }
 
-
 func TestSampleAttributes(t *testing.T) {
 	// Create a profile with two samples, with different sample attributes
 	// one process=firefox, the other process=chrome
