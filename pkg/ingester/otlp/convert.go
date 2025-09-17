@@ -95,11 +95,15 @@ func newProfileBuilder(src *otelProfile.Profile, dictionary *otelProfile.Profile
 	}
 	res.addstr("")
 
-	sampleType, err := res.convertSampleTypesBack([]*otelProfile.ValueType{src.SampleType}, dictionary)
+	if src.SampleType == nil {
+		return nil, fmt.Errorf("sample type is missing")
+	}
+	sampleType, err := res.convertSampleTypeBack(src.SampleType, dictionary)
 	if err != nil {
 		return nil, err
 	}
-	res.dst.SampleType = sampleType
+	res.dst.SampleType = []*googleProfile.ValueType{sampleType}
+
 	periodType, err := res.convertValueTypeBack(src.PeriodType, dictionary)
 	if err != nil {
 		return nil, err
@@ -196,16 +200,12 @@ func serviceNameFromSample(sample *otelProfile.Sample, dictionary *otelProfile.P
 	return getAttributeValueByKeyOrEmpty(sample.AttributeIndices, dictionary, serviceNameKey)
 }
 
-func (p *profileBuilder) convertSampleTypesBack(ost []*otelProfile.ValueType, dictionary *otelProfile.ProfilesDictionary) ([]*googleProfile.ValueType, error) {
-	var gsts []*googleProfile.ValueType
-	for stIdx, st := range ost {
-		gst, err := p.convertValueTypeBack(st, dictionary)
-		if err != nil {
-			return make([]*googleProfile.ValueType, 0), fmt.Errorf("could not process sample type at index %d: %w", stIdx, err)
-		}
-		gsts = append(gsts, gst)
+func (p *profileBuilder) convertSampleTypeBack(ost *otelProfile.ValueType, dictionary *otelProfile.ProfilesDictionary) (*googleProfile.ValueType, error) {
+	gst, err := p.convertValueTypeBack(ost, dictionary)
+	if err != nil {
+		return nil, fmt.Errorf("could not process sample type: %w", err)
 	}
-	return gsts, nil
+	return gst, nil
 }
 
 func (p *profileBuilder) convertValueTypeBack(ovt *otelProfile.ValueType, dictionary *otelProfile.ProfilesDictionary) (*googleProfile.ValueType, error) {
