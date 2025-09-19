@@ -301,6 +301,13 @@ func (p *profileBuilder) convertSampleBack(os *otelProfile.Sample, dictionary *o
 	gs := &googleProfile.Sample{
 		Value: os.Values,
 	}
+
+	// According to spec, samples can come without values, in which case we assume that each timestamp occurrence has value of 1.
+	// See: https://github.com/open-telemetry/opentelemetry-proto/blob/81d6676cdc30dddb0ec1f87d080e6dac07ab214f/opentelemetry/proto/profiles/v1development/profiles.proto#L351-L353
+	if len(gs.Value) == 0 && len(os.TimestampsUnixNano) > 0 {
+		gs.Value = []int64{int64(len(os.TimestampsUnixNano))}
+	}
+
 	if len(gs.Value) == 0 {
 		return nil, fmt.Errorf("sample value is required")
 	}
