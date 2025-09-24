@@ -60,7 +60,7 @@ require (
 	github.com/onsi/gomega v1.35.1
 	github.com/opentracing-contrib/go-grpc v0.0.0-20210225150812-73cb765af46e
 	github.com/opentracing/opentracing-go v1.2.1-0.20220228012449-10b1cf09e00b
-	github.com/parquet-go/parquet-go v0.23.0
+	github.com/parquet-go/parquet-go v0.25.1
 	github.com/pkg/errors v0.9.1
 	github.com/planetscale/vtprotobuf v0.6.1-0.20240319094008-0393e58bdf10
 	github.com/platinummonkey/go-concurrency-limits v0.8.0
@@ -256,7 +256,6 @@ require (
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/rs/xid v1.6.0 // indirect
 	github.com/sean-/seed v0.0.0-20170313163322-e2103e2c3529 // indirect
-	github.com/segmentio/encoding v0.4.0 // indirect
 	github.com/sercand/kuberesolver/v6 v6.0.0 // indirect
 	github.com/spiffe/go-spiffe/v2 v2.5.0 // indirect
 	github.com/stretchr/objx v0.5.2 // indirect
