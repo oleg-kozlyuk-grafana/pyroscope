@@ -73,7 +73,7 @@ require (
 	github.com/sirupsen/logrus v1.9.3
 	github.com/sony/gobreaker/v2 v2.0.0
 	github.com/spf13/afero v1.14.0
-	github.com/stretchr/testify v1.10.0
+	github.com/stretchr/testify v1.11.1
 	github.com/thanos-io/objstore v0.0.0-20250813080715-4e5fd4289b50
 	github.com/uber/jaeger-client-go v2.30.0+incompatible
 	github.com/valyala/bytebufferpool v1.0.0
