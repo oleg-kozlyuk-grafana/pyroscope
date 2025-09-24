@@ -50,7 +50,7 @@ require (
 	github.com/json-iterator/go v1.1.12
 	github.com/k0kubun/pp/v3 v3.2.0
 	github.com/klauspost/compress v1.18.0
-	github.com/kubescape/go-git-url v0.0.27
+	github.com/kubescape/go-git-url v0.0.30
 	github.com/mattn/go-isatty v0.0.20
 	github.com/minio/minio-go/v7 v7.0.95
 	github.com/mitchellh/go-wordwrap v1.0.1
