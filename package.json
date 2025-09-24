@@ -96,7 +96,7 @@
     "@react-hook/resize-observer": "^1.2.6",
     "@react-hook/window-size": "^3.1.1",
     "@reduxjs/toolkit": "^1.6.2",
-    "@szhsin/react-menu": "3.5.2",
+    "@szhsin/react-menu": "3.5.3",
     "@types/file-saver": "^2.0.5",
     "classnames": "^2.2.6",
     "color": "^3.1.3",
