@@ -11,8 +11,8 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@pyroscope/nodejs": "v0.4.5",
-    "express": "^4.19.2",
-    "morgan": "^1.10.0"
+    "express": "^5.1.0",
+    "morgan": "^1.10.1"
   },
   "resolutions": {
     "protobufjs": "^7.2.5",
